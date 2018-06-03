@@ -10,7 +10,7 @@ The goal is to develop a new front-end using the React framework in order to com
 - Express.JS
 - Node.JS
 - JavaScript
-- Bootstrap
+- Bootstrap v4
 - Node Package Manager
 - Bower
 
