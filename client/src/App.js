@@ -11,17 +11,9 @@ class App extends Component {
           <h1>Personal Library</h1>
           <InputGroup>
             <Input placeholder="ISBN-10" />
-            <InputGroupAddon addonType="prepend">
-            <InputGroupButton>Fetch My Book!</InputGroupButton></InputGroupAddon>
+            <InputGroupAddon addonType="append"><Button color="primary">Fetch My Book!</Button></InputGroupAddon>
           </InputGroup>
         </Container>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
