@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Alert, Container, InputGroup, InputGroupAddon, InputGroupButton, Input } from 'reactstrap';
+import { Button, Container, InputGroup, InputGroupAddon, Input, Table } from 'reactstrap';
 
 class App extends Component {
   render() {
@@ -13,6 +12,20 @@ class App extends Component {
             <Input placeholder="ISBN-10" />
             <InputGroupAddon addonType="append"><Button color="primary">Fetch My Book!</Button></InputGroupAddon>
           </InputGroup>
+          <Table striped>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Subject</th>
+                <th>ISBN</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </Table>
         </Container>
       </div>
     );
