@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button, Container, InputGroup, InputGroupAddon, Input, Table } from 'reactstrap';
+import {
+  Button, 
+  Container,
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  Table
+} from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +39,7 @@ class App extends Component {
   render() {
     const books = this.state.books.map((book) => {
       return (
-        <tr>
+        <tr key={book.iSBN}>
           <td>{book.title}</td>
           <td>{book.author}</td>
           <td>{book.publisher}</td>
@@ -55,6 +62,7 @@ class App extends Component {
               <Button color="primary">Fetch My Book!</Button>
             </InputGroupAddon>
           </InputGroup>
+            <Input placeholder="Search Library" />
           <Table striped>
             <thead>
               <tr>
