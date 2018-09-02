@@ -12,7 +12,11 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { books: [] };
+    this.updateSearch = this.updateSearch.bind(this);
+    this.state = {
+      books: [],
+      search: ''
+    };
   }
 
   componentWillMount() {
@@ -36,8 +40,18 @@ class App extends Component {
     });
   }
 
+  updateSearch(event) {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
   render() {
-    const books = this.state.books.map((book) => {
+    const filterBooks = this.state.books.filter(book => {
+      return book.title.indexOf(this.state.search) !== -1;
+    });
+
+    const books = filterBooks.map((book) => {
       return (
         <tr key={book.iSBN}>
           <td>{book.title}</td>
@@ -62,7 +76,9 @@ class App extends Component {
               <Button color="primary">Fetch My Book!</Button>
             </InputGroupAddon>
           </InputGroup>
-            <Input placeholder="Search Library" />
+            <Input placeholder="Search Library" 
+            value={this.state.search}
+            onChange={this.updateSearch} />
           <Table striped>
             <thead>
               <tr>
