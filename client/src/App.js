@@ -69,14 +69,15 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <h1>Personal Library</h1>
-          <InputGroup>
+          <h1 className="bottom-margin">Personal Library</h1>
+          <InputGroup className="bottom-margin">
             <Input placeholder="ISBN-10" />
             <InputGroupAddon addonType="append">
               <Button color="primary">Fetch My Book!</Button>
             </InputGroupAddon>
           </InputGroup>
             <Input placeholder="Search Library" 
+            className="bottom-margin"
             value={this.state.search}
             onChange={this.updateSearch} />
           <Table striped>
