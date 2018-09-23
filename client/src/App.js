@@ -19,25 +19,12 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      books: [
-        {
-          title: 'title1',
-          author: 'author1',
-          publisher: 'pub1',
-          subject: 'sub1',
-          iSBN: 'isbn1'
-        },
-        {
-          title: 'title2',
-          author: 'author2',
-          publisher: 'pub2',
-          subject: 'sub2',
-          iSBN: 'isbn2'
-        }
-      ]
-    });
+  componentDidMount() {
+    fetch('/books')
+      .then(response => response.json())
+      .then(json => this.setState({
+        books: json.data
+      }));
   }
 
   updateSearch(event) {
@@ -48,17 +35,17 @@ class App extends Component {
 
   render() {
     const filterBooks = this.state.books.filter(book => {
-      return book.title.indexOf(this.state.search) !== -1;
+      return book.attributes.title.toLowerCase().indexOf(this.state.search) !== -1;
     });
 
-    const books = filterBooks.map((book) => {
+    const books = filterBooks.map((book, index) => {
       return (
-        <tr key={book.iSBN}>
-          <td>{book.title}</td>
-          <td>{book.author}</td>
-          <td>{book.publisher}</td>
-          <td>{book.subject}</td>
-          <td>{book.iSBN}</td>
+        <tr key={index}>
+          <td>{book.attributes.title}</td>
+          <td>{book.attributes.author}</td>
+          <td>{book.attributes.publisher}</td>
+          <td>{book.attributes.subject}</td>
+          <td>{book.attributes.iSBN}</td>
           <td>
           <Button color='danger'>Remove</Button>
             </td>

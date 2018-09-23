@@ -23,7 +23,7 @@ var bk = mongoose.model('Book',
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.sendFile(path.resolve('./LibraryEmberApp/dist/index.html'))
+    res.sendFile(path.resolve('./client/build/index.html'))
 });
 
 router.get('/books', function(req, res) {
