@@ -9,22 +9,52 @@ import {
   Table
 } from 'reactstrap';
 
+const bkMock = {
+  "data": [
+    {
+      "_id": "5c9eb5e584de6e4220cf35b6",
+      "type": "books",
+      "__v": 0,
+      "attributes": {
+        "title": "Spring Boot in Action",
+        "author": "Craig Walls",
+        "publisher": "Manning Publications",
+        "isbn": "1617292540"
+      }
+    },
+    {
+      "_id": "5cedd42ae425082cb084e5a9",
+      "type": "books",
+      "__v": 0,
+      "attributes": {
+        "title": "Spring Boot in Action",
+        "author": "Craig Walls",
+        "publisher": "Manning Publications",
+        "isbn": "1617292540"
+      }
+    }
+  ]
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.updateSearch = this.updateSearch.bind(this);
     this.state = {
-      books: [],
+      books: {data:[]},
       search: ''
     };
   }
 
   componentDidMount() {
-    fetch('/books')
-      .then(response => response.json())
-      .then(json => this.setState({
-        books: json.data
-      }));
+    // fetch('/books')
+    //   .then(response => response.json())
+    //   .then(json => this.setState({
+    //     books: json.data
+    //   }));
+    this.setState({
+      books: bkMock
+    })
   }
 
   updateSearch(event) {
@@ -34,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    const filterBooks = this.state.books.filter(book => {
+    const filterBooks = this.state.books.data.filter(book => {
       return book.attributes.title.toLowerCase().indexOf(this.state.search) !== -1;
     });
 
